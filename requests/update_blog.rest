@@ -1,0 +1,9 @@
+PUT http://localhost:3003/api/blogs/601689293c2a2010fcd4a502
+Content-Type: application/json
+
+{
+    "title": "päivitetty blogi",
+    "author": "kirjoittaja2",
+    "url": "www.blogi.fi",
+    "likes": 600
+}

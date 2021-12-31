@@ -1,0 +1,29 @@
+.error {
+    color: darkred;
+    background: lightyellow;
+    font-size: 20px;
+    border-style: solid;
+    border-radius: 3px;
+    border-color: yellowgreen;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.success {
+    color: darkolivegreen;
+    background: lightyellow;
+    font-size: 20px;
+    border-style: solid;
+    border-radius: 3px;
+    border-color: yellowgreen;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.list {
+    padding-top: 10px;
+    border-width: 0.5px;
+    margin-bottom: 5px;
+    border-bottom-style: solid;
+    border-top-style: solid;
+}
