@@ -1,6 +1,5 @@
 describe('Blog app', function () {
   beforeEach(function () {
-    //cy.request('POST', 'http://localhost:3001/api/testing/reset')
     cy.request('POST', 'http://localhost:3001/api/testing/reset')
     const user = {
       name: 'Harry Potter',
@@ -8,7 +7,7 @@ describe('Blog app', function () {
       password: 'gryffindor'
     }
     cy.request('POST', 'http://localhost:3001/api/users/', user)
-    cy.visit('http://localhost:3000')
+    cy.visit('http://localhost:3001')
   })
   it('Login form is shown', function () {
     cy.contains('login').click()
