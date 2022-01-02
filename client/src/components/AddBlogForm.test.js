@@ -28,7 +28,7 @@ test('<AddBlogForm /> updates parent state and calls onSubmit', () => {
     target: { value: 'www.witchtoday.com' }
   })
   fireEvent.submit(form)
-  console.log(createBlog.mock.calls[0][0].title)
+  //console.log(createBlog.mock.calls[0][0].title)
 
   expect(createBlog.mock.calls).toHaveLength(1)
   //console.log(createBlog.mock.calls)

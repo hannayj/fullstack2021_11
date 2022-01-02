@@ -102,7 +102,7 @@ describe('addition of new blog', () => {
 
     const blogsAtEnd = await helper.blogsInDb()
     const likes = blogsAtEnd.map(b => b.likes)
-    console.log(likes[likes.length - 1])
+    //console.log(likes[likes.length - 1])
     expect(likes[likes.length - 1]).toBe(0)
   })
 
