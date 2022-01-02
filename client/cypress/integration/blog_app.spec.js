@@ -134,25 +134,6 @@ describe('Blog app', function () {
             cy.wrap($el[1].innerText).should('contain', 'The Rights of the House Elves')
             cy.wrap($el[2].innerText).should('contain', 'My Live After Hogwarts')
           })
-
-        cy.contains('The Rights of the House Elves')
-          .contains('like')
-          .click()
-
-        cy.contains('The Rights of the House Elves')
-          .contains('like')
-          .click()
-
-        /*cy.contains('The Rights of the House Elves')
-          .contains('likes 8')*/
-
-        cy.get('.list')
-          .then(($el) => {
-            //console.log($el[0].innerText)
-            cy.wrap($el[0].innerText).should('contain', 'The Rights of the House Elves')
-            cy.wrap($el[1].innerText).should('contain', 'Severus Snape in Memoriam')
-            cy.wrap($el[2].innerText).should('contain', 'My Live After Hogwarts')
-          })
       })
     })
   })
