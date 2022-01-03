@@ -11,7 +11,6 @@ jobs:
     env:
       TEST_MONGODB_URI: ${{secrets.TEST_MONGODB_URI}}
       SECRET: ${{secrets.SECRET}}
-      PORT: ${{secrets.PORT}}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
