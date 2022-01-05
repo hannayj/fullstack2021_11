@@ -1,1 +1,1 @@
-web: npm start-broken
+web: npm start
