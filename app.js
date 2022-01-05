@@ -30,6 +30,10 @@ app.use('/api/blogs', blogsRouter)
 app.use('/api/users', usersRouter)
 app.use('/api/login', loginRouter)
 
+app.get('/health', (req, res) => {
+  res.send('ok')
+})
+
 if(process.env.NODE_ENV === 'test') {
   const testingRouter = require('./controllers/testing')
   app.use('/api/testing', testingRouter)

@@ -39,6 +39,6 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "blog-with-actions"
           heroku_email: ${{secrets.HEROKU_EMAIL}}
-        env:
-          MONGODB_URI: ${{secrets.MONGODB_URI}}
-          SECRET: ${{secrets.SECRET}}
+          healthcheck: "https://blog-with-actions.herokuapp.com/health"
+          checkstring: "ok"
+          rollbackonhealthcheckfailed: true
