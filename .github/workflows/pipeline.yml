@@ -9,6 +9,7 @@ jobs:
   deployment_pipeline:
     runs-on: ubuntu-18.04
     env:
+      MONGO_URI: ${{secrets.MONGODB_URI}}
       TEST_MONGODB_URI: ${{secrets.TEST_MONGODB_URI}}
       SECRET: ${{secrets.SECRET}}
     steps:
