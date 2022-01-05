@@ -51,3 +51,30 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BUMP: patch
           RELEASE_BRANCHES: master
+      - name: Build failure Slack message
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          fields: repo,message,commit,author,took
+          icon_emoji: ':no_entry:'
+          channel: '#code'
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        if: ${{ failure() }}
+      - name: Deployment success Slack message
+        uses: 8398a7/action-slack@v3
+        with:
+          status: custom
+          fields: commit,author,took
+          channel: '#code'
+          custom_payload: |
+            {
+              icon_emoji: ':white_check_mark:',
+              attachments: [{
+                color: 'good',
+                text: `A new version deployed to https://pokedex-through-pipeline.herokuapp.com (${process.env.AS_COMMIT}) by ${process.env.AS_AUTHOR} Build took ${process.env.AS_TOOK}`,
+              }]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ', '), '#skip') && success() }}
