@@ -8,10 +8,6 @@ on:
 jobs:
   deployment_pipeline:
     runs-on: ubuntu-18.04
-    env:
-      MONGO_URI: ${{secrets.MONGODB_URI}}
-      TEST_MONGODB_URI: ${{secrets.TEST_MONGODB_URI}}
-      SECRET: ${{secrets.SECRET}}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -25,15 +21,24 @@ jobs:
         run: npm run build
       - name: test
         run: npm test && npm run test:ui
+        env:
+          TEST_MONGODB_URI: ${{secrets.TEST_MONGODB_URI}}
+          SECRET: ${{secrets.SECRET}}
       - name: e2e tests
         uses: cypress-io/github-action@v2
         with:
           command: npm run test:e2e
           start: npm run start:test
           wait-on: http://localhost:3001
+        env:
+          TEST_MONGODB_URI: ${{secrets.TEST_MONGODB_URI}}
+          SECRET: ${{secrets.SECRET}}
       - name: deploy to Heroku
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "blog-with-actions"
           heroku_email: ${{secrets.HEROKU_EMAIL}}
+        env:
+          MONGODB_URI: ${{secrets.MONGODB_URI}}
+          SECRET: ${{secrets.SECRET}}
