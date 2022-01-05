@@ -42,3 +42,4 @@ jobs:
         env:
           MONGODB_URI: ${{secrets.MONGODB_URI}}
           SECRET: ${{secrets.SECRET}}
+          SKIP_PREFLIGHT_CHECK: true
